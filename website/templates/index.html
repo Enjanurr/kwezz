@@ -1,18 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Home{% endblock %}</title>
-    <link rel='stylesheet' href="/website/static/style.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% endblock %}
+
 </head>
 <body>
-    <nav>
+
+   <div class = 'navbar'>
         <ul>
-            <li><a href='/login'>login</a></li>
-            {{ text }}
-            <li><a href='/questions'>questions</a></li>
         </ul>
-    </nav>
+        <!--I remove : href='/login' and href='/questions'  -->
+            <li><a >login</a></li>
+       
+            <li><a >questions</a></li>
+        </ul>
+    </div>
+    <hr>
+    {% block content %}
+    
+    <form action="/login" method="POST">
+        <label for="type_username">type your username:</label><br>
+        <input type="text" required placeholder="username" name="name">
+       <input type='Submit' value='Submit'>
+
+    </form>
+    {% endblock %}
 </body>
 </html>

@@ -1,6 +1,9 @@
 {% extends "index.html" %}
-
-
-{% block body %}
-{{ text }}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+{% block content %}
+<form action="questions" method="POST"></form>
+<label for="">type your answer here</label>
+<input type="text" required autofocus placeholder="answer" name="answer"><button type="submit">submit</button>
 {% endblock %}
