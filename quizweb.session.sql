@@ -24,3 +24,6 @@ CREATE TABLE Scores(
     id integer primary key auto_increment,
     scores integer not null 
 );
+
+--@block
+SELECT * from Users;

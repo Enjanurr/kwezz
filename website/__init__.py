@@ -8,16 +8,16 @@ DB_NAME = 'kwez.db'  # SQLite database name
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "JANURR"
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://root:bajentingjanurrpogi123@127.0.0.1:3306/{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:bajentingjanurrpogi123@127.0.0.1:3306/kwez'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     db.init_app(app)
     
-    from .views import views
-    from .auth import auth
+    from .auth import auth as auth_blueprint
+    from .views import views as views_blueprint
 
-    app.register_blueprint(views, url_prefix='/')
-    app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(auth_blueprint, url_prefix='/')
+    app.register_blueprint(views_blueprint, url_prefix='/')
     
     from .models import Users, Scores
     
