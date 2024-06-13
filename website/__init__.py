@@ -5,6 +5,7 @@ from os import path
 db = SQLAlchemy()
 DB_NAME = 'kwez.db'  # SQLite database name
 
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = "JANURR"
@@ -16,7 +17,7 @@ def create_app():
     from .auth import auth as auth_blueprint
     from .views import views as views_blueprint
 
-    app.register_blueprint(auth_blueprint, url_prefix='/')
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(views_blueprint, url_prefix='/')
     
     from .models import Users, Scores

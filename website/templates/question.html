@@ -1,9 +1,15 @@
-{% extends "index.html" %}
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-{% endblock %}
-{% block content %}
-<form action="questions" method="POST"></form>
-<label for="">type your answer here</label>
-<input type="text" required autofocus placeholder="answer" name="answer"><button type="submit">submit</button>
-{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+    <h2>{{ questions.questions_text }}</h2>
+    <form method="POST" action="question">
+        <input type="text" name="answer" placeholder="Your answer" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>

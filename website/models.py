@@ -1,23 +1,22 @@
 from . import db
 from flask_login import UserMixin
-#for scores
-class Scores(db.Model):
-      id = db.Column(db.Integer, primary_key=True)
-      scores = db.Column(db.Integer)
-      user_id = db.Column(db.Integer, db.ForeignKey('users.id'), unique=True)  # ForeignKey should match the name of the table 'users'
-      user = db.relationship('Users', back_populates='scores', uselist=False)  # One-to-one relationship
 
-
-#for the users
-class Users(db.Model,UserMixin):
+class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    student_name = db.Column(db.String())
-    scores = db.relationship('Scores', back_populates='user')# One-to-one relationship
+    student_name = db.Column(db.String(255), nullable=False)
+    scores = db.relationship('Scores', back_populates='user', uselist=False)
 
-# for the questions
+class Scores(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    score = db.Column(db.Integer, nullable=False)  # Changed to singular 'score' for clarity
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), unique=True)
+    user = db.relationship('Users', back_populates='scores')
 
+class Questions(db.Model):
+    __tablename__ = 'questions'
+    id = db.Column(db.Integer, primary_key=True)
+    questions_text = db.Column(db.String(), nullable=False)  # Corrected typo in column name
+    correct_answer = db.Column(db.String(), nullable=False)
 
-def __repr__(self):
-      return f"<Student {self.name}>"
-
-
+    def __repr__(self):
+        return f"<Question {self.questions_text}>"

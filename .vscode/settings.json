@@ -13,6 +13,20 @@
             "database": "kwez",
             "username": "root",
             "password": "bajentingjanurrpogi123"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "quizweb",
+            "database": "kwez",
+            "username": "root",
+            "password": "bajentingjanurrpogi123"
         }
     ]
 }
